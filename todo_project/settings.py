@@ -31,14 +31,21 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
-    'django.contrib.admin',
-    'django.contrib.auth',
-    'django.contrib.contenttypes',
-    'django.contrib.sessions',
-    'django.contrib.messages',
-    'django.contrib.staticfiles',
-    'todo_app',
-    'login_app',
+   'django.contrib.admin',
+   'django.contrib.auth',
+   'django.contrib.contenttypes',
+   'django.contrib.sessions',
+   'django.contrib.messages',
+   'django.contrib.staticfiles',
+
+   # 3rd party apps
+   'rest_framework',
+   'rest_framework.authtoken',
+   'rest_auth',
+
+   # my apps
+   'todo_app',
+   'login_app',
 ]
 
 MIDDLEWARE = [
@@ -120,3 +127,13 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
 STATIC_URL = '/static/'
+
+REST_FRAMEWORK = {
+   'DEFAULT_PERMISSION_CLASSES': [
+      'todo_app.permissions.IsOwnerOrNoAccess',
+      'rest_framework.permissions.IsAuthenticated',
+   ],
+   'DEFAULT_AUTHENTICATION_CLASSES': [
+      'rest_framework.authentication.TokenAuthentication',
+   ]
+}
