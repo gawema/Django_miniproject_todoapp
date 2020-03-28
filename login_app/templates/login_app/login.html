@@ -19,5 +19,6 @@
    {% if error %}
       {{ error }}
    {% endif %}
+   <a href="{% url 'login_app:request_password_reset' %}">Request Password Reset</a>
 </body>
 </html>

@@ -9,6 +9,7 @@
 </head>
 <body>
    <h1>Todo</h1>
+   <p>Welcome {{ user }} - <a href="{% url 'login_app:logout' %}">Log out</a> - <a href="{% url 'login_app:delete_account' %}">Delete Account</a></p>
    <hr />
       <ul>
       {% for todo in todos  %}
